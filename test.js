@@ -19,7 +19,7 @@ connection.connect((error) => {
     }
 })
 
-connection.query('INSERT INTO employees VALUES(5,"paras","india")', (error, rows) => {
+connection.query('INSERT INTO employees VALUES(6,"PALLI","india")', (error, rows) => {
     if (error) {
         throw error
     } else {
