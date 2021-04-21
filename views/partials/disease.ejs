@@ -1,0 +1,25 @@
+<% if(rows !='undefined' ) { %>
+
+    <% rows.forEach((row,index)=> { %>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col" style="text-decoration: none;">
+                <a href="/data?disease=<%=row.name %>" style="text-decoration: none;">
+
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= row.name %>
+                            </h5>
+
+                        </div>
+                    </div>
+
+                </a>
+            </div>
+
+        </div>
+
+
+        <% }) ; %>
+
+            <% } %>
