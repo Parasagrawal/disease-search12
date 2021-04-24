@@ -1,0 +1,233 @@
+create schema medical_search_engine;
+
+create table disease(
+Id int not null,
+disease_name varchar(20) not null
+);
+
+
+insert into disease values(1,"Corona");
+insert into disease values(2,"Stroke");
+insert into disease values(3,"Respiratory Diseases");
+insert into disease values(4,"Tuberculosis");
+insert into disease values(5,"Chronic Pulmonary Disease");
+insert into disease values(6,"Diabetes");
+insert into disease values(7,"Alzheimer’s Disease");
+insert into disease values(8,"Malaria");
+insert into disease values(9,"Diarrheal Diseases");
+insert into disease values(10,"Malignant & Other Tumours");
+insert into disease values(11,"Cardiovascular disease");
+
+
+
+
+create table symtoms(
+d_id int not null,
+symtom_name varchar(250) not null
+);
+
+insert into symtoms values(1,"Fever");
+insert into symtoms values(1,"Cough");
+insert into symtoms values(1,"Tiredness");
+insert into symtoms values(1,"Loss of taste and smell");
+insert into symtoms values(1,"Chest pain");
+
+insert into symtoms values(2,"Sudden weakness or numbness in the face, arm, or leg ");
+insert into symtoms values(2,"Trouble seeing from one or both the eyes");
+insert into symtoms values(2,"Severe headache with no known cause");
+insert into symtoms values(2,"Trouble walking");
+insert into symtoms values(2,"Sudden confusion, difficulty in speaking or understanding");
+
+insert into symtoms values(3,"Nasal congestion");
+insert into symtoms values(3,"Running nose");
+insert into symtoms values(3,"Sneezing");
+insert into symtoms values(3,"Fever");
+insert into symtoms values(3,"Cough");
+insert into symtoms values(3,"Weakness");
+insert into symtoms values(3,"Shortness of breath lasting for more than a week");
+insert into symtoms values(3,"Scratchy or sore throat");
+
+insert into symtoms values(4,"Fatigue");
+insert into symtoms values(4,"Coughing up blood");
+insert into symtoms values(4,"Fever");
+insert into symtoms values(4,"Chills");
+insert into symtoms values(4,"Night sweats");
+insert into symtoms values(4,"Loss of appetite");
+insert into symtoms values(4,"Unintentional weight loss");
+
+insert into symtoms values(5,"Wheezing");
+insert into symtoms values(5,"Chest tightness");
+insert into symtoms values(5,"Lack of energy");
+insert into symtoms values(5,"Frequent respiratory infections");
+insert into symtoms values(5,"Swelled ankles, legs or feet");
+insert into symtoms values(5,"Shortness of breath ");
+
+insert into symtoms values(6,"Extreme hunger");
+insert into symtoms values(6,"weight loss");
+insert into symtoms values(6,"Fatigue");
+insert into symtoms values(6,"Increased thirst");
+insert into symtoms values(6,"Irritability");
+insert into symtoms values(6,"Frequent urination");
+
+insert into symtoms values(7,"Difficulty in completing familiar tasks");
+insert into symtoms values(7,"forgetting recently learned task");
+insert into symtoms values(7,"Misplacing things");
+insert into symtoms values(7,"Problem with words");
+insert into symtoms values(7,"Poor judgement");
+
+insert into symtoms values(8,"Fever");
+insert into symtoms values(8,"Muscle pain");
+insert into symtoms values(8,"Nausea");
+insert into symtoms values(8,"Abdominal Pain");
+insert into symtoms values(8,"Headache");
+
+insert into symtoms values(9,"loose stool");
+insert into symtoms values(9,"mucus in stool");
+insert into symtoms values(9,"Bloating");
+insert into symtoms values(9,"Nausea");
+insert into symtoms values(9,"Cramps");
+insert into symtoms values(9,"Blood in stool");
+
+insert into symtoms values(10,"Painless lump");
+
+insert into symtoms values(11,"Shortness of breath");
+insert into symtoms values(11,"Chest pain");
+insert into symtoms values(11,"Chest discomfort");
+insert into symtoms values(11,"Pain in the upper abdomen, neck, back, throat, jaw");
+insert into symtoms values(11,"Pain or numbness in your arms and legs");
+
+
+
+
+create table preventions(
+d_id int not null,
+prevention varchar(250) not null
+);
+
+insert into preventions values(1,"Avoid close contact with the infected person");
+insert into preventions values(1,"cover your face with masks");
+insert into preventions values(1,"wash your hand with sanitizers");
+insert into preventions values(1,"stay home and avoid going outside");
+
+insert into preventions values(2,"Quit smoking");
+insert into preventions values(2,"Control blood pressure");
+insert into preventions values(2,"Maintain a healthy lifestyle");
+insert into preventions values(2,"Exercise regularly");
+insert into preventions values(2,"Limit regularly");
+
+insert into preventions values(3,"Quit smoking");
+insert into preventions values(3,"Exercise regularly ");
+insert into preventions values(3,"Stay active");
+insert into preventions values(3,"Wear a surgical mask if required");
+insert into preventions values(3,"Avoid going to polluted areas");
+
+insert into preventions values(4,"Avoid close contact with people where infected may be seen for instance hospitals");
+insert into preventions values(4,"Screening for those who have a high risk");
+insert into preventions values(4,"Vaccinations if you are infected so that it does not spread");
+
+insert into preventions values(5,"Do not smoke");
+insert into preventions values(5,"Know your family history");
+insert into preventions values(5,"Protect yourself against dust, fumes, and chemicals at home or at work");
+insert into preventions values(5,"Avoid air pollution");
+
+insert into preventions values(6,"Excercise regularly");
+insert into preventions values(6,"Avoid sedentary lifestyle");
+insert into preventions values(6,"Mantain good nutrition");
+insert into preventions values(6,"Quit smoking ");
+insert into preventions values(6,"more fibre rich food");
+
+insert into preventions values(7,"Healthy diet");
+insert into preventions values(7,"Avoid fatty food");
+insert into preventions values(7,"Avoid smoking");
+insert into preventions values(7,"Control cardiovascular risk factors");
+
+insert into preventions values(8,"stay in well screened areas");
+insert into preventions values(8,"use insect repellent");
+insert into preventions values(8,"opt for full screened clothes");
+insert into preventions values(8,"use bed net");
+
+insert into preventions values(9,"Quit alcohol");
+insert into preventions values(9,"wash hands regularly");
+insert into preventions values(9,"Follow good hygiene");
+insert into preventions values(9,"Avoid use of aspirin");
+
+insert into preventions values(10,"Quit Tobacco");
+insert into preventions values(10,"Eat healthy food");
+insert into preventions values(10,"regular immunization");
+insert into preventions values(10,"healthy body weight");
+
+insert into preventions values(11,"Be physically active");
+insert into preventions values(11,"Exercise regularly");
+insert into preventions values(11,"Monitor your weight");
+insert into preventions values(11,"Stop smoking");
+insert into preventions values(11,"Control your blood pressure");
+insert into preventions values(11,"Keep a check of Your Cholesterol");	
+
+
+
+create table causes(
+d_id int not null,
+cause varchar(250) not null
+);
+
+insert into causes values(1,"close contact with infected person");
+insert into causes values(1,"touch a infected area");
+insert into causes values(1,"airborne transmission");
+
+insert into causes values(2,"People with high BP, high cholesterol");
+insert into causes values(2,"Diabetes are at higher risk");
+insert into causes values(2,"Smoking");
+insert into causes values(2,"Hemorrhage in the brain");
+insert into causes values(2,"Heart disease");
+insert into causes values(2,"Medications");
+insert into causes values(2,"Genetic disorder");
+
+insert into causes values(3,"Excessive exposure to smoke or other toxic substances");
+insert into causes values(3,"Low immune functioning");
+insert into causes values(3,"Smoking");
+insert into causes values(3,"Dust");
+insert into causes values(3,"Air pollution");
+insert into causes values(3,"Inappropriate growth of lungs before birth or during childhood");
+
+insert into causes values(4,"Weakened immune system");
+insert into causes values(4,"Traveling or living in certain areas ");
+insert into causes values(4,"Saliva droplets spreading from person to person when the infected person coughs or sneezes ");
+insert into causes values(4,"Friends and family of the infected person");
+
+insert into causes values(5,"Smoking or second-hand smoke");
+insert into causes values(5,"Chemical fumes and other lung irritants");
+insert into causes values(5,"Anyone in the family linked to COPD");
+insert into causes values(5,"History of respiratory infections during childhood");
+
+insert into causes values(6,"unhealthy diet");
+insert into causes values(6,"not excercising regularly");
+insert into causes values(6,"high BP");
+insert into causes values(6,"Obesity");
+insert into causes values(6,"unhealthy food intake");
+
+insert into causes values(7,"old age");
+insert into causes values(7,"family history");
+insert into causes values(7,"unhealthy lifestyle");
+insert into causes values(7,"head trauma");
+insert into causes values(7,"poor communication");
+
+insert into causes values(8,"Transmission by female Anopheles mosquitoes ");
+
+
+insert into causes values(9,"no access to clean water");
+insert into causes values(9,"Poor sanitation");
+insert into causes values(9,"Malnourishment");
+insert into causes values(9,"Weak immune system");
+
+insert into causes values(10,"ionising radiation");
+insert into causes values(10,"exposure to chemicals");
+insert into causes values(10,"Genetics");
+insert into causes values(10,"Pathogen");
+
+insert into causes values(11,"Tobacco intake");
+insert into causes values(11,"Lack of physical activity");
+insert into causes values(11,"Poor diet");
+insert into causes values(11,"Hereditary");
+insert into causes values(11,"High BP or Cholesterol");
+insert into causes values(11,"Overweight");
+insert into causes values(11,"Family history of CDV");

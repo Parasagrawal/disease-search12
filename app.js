@@ -14,7 +14,7 @@ var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'password',
-    database: 'company',
+    database: 'medical_search_engine',
     port: '3306'
 });
 module.exports = connection;
@@ -42,7 +42,7 @@ console.log(port)
 app.use('/', require('./routes/index'))
 // app.use('/data', require('./routes/user'))
 
-app.use('/users', require('./routes/index'))
+// app.use('/users', require('./routes/index'))
 // app.get('/', (req, res) => {
 //     connection.query('SELECT * FROM employees', (error, rows, fields) => {
 //         if (!error) {
@@ -53,5 +53,3 @@ app.use('/users', require('./routes/index'))
 //             console.log("error")
 //     })
 // })
-
-

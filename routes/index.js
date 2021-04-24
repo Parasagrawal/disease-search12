@@ -4,7 +4,7 @@ const router = express.Router()
 const connection = require('../app')
 
 router.get('/', (req, res) => {
-    connection.query('SELECT name FROM employees', (error, rows, fields) => {
+    connection.query('SELECT * FROM disease', (error, rows, fields) => {
         if (!error) {
             // res.send({rows})
             // res.send(rows)
@@ -22,9 +22,31 @@ router.get('/', (req, res) => {
     })
 })
 
+// router.get('/images', (req, res) => {
+//     res.attachment");
+// }
+
 router.get('/data', (req, res) => {
     console.log(req.query.disease)
-    res.render("data")
+    // res.render("data")
+
+
+    connection.query('SELECT * from symtoms', (error, pop, fields) => {
+        if (!error) {
+            // res.send({rows})
+            // res.send(rows)
+            // rows=(rows);
+            // console.log(rows[1].name);
+
+            console.log(pop);
+
+            res.render("data")
+        } else {
+            console.log("error")
+            res.send("no disease")
+
+        }
+    })
 })
 
 module.exports = router

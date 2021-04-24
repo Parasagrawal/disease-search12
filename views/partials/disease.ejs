@@ -1,14 +1,14 @@
 <% if(rows !='undefined' ) { %>
 
     <% rows.forEach((row,index)=> { %>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <div class="col" style="text-decoration: none;">
-                <a href="/data?disease=<%=row.name %>" style="text-decoration: none;">
+        <div class="row row-cols-1 row-cols-md-3 g-4" style="padding: 2px; ">
+            <div class="col" style="text-decoration: none; ">
+                <a href="/data?disease=<%=row.disease_name %>" style="text-decoration: none;padding: 15px;">
 
                     <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <%= row.name %>
+                        <div class="card-body" style="background-color:#e3f6f5;  ">
+                            <h5 class="card-title" style="color:black;text-align: center;font-style: serif; text-transform: capitalize;">
+                                <%= row.disease_name%>
                             </h5>
 
                         </div>
