@@ -1,13 +1,17 @@
 <% if(rows !='undefined' ) { %>
 
     <% rows.forEach((row,index)=> { %>
-        <div class="row row-cols-1 row-cols-md-3 g-4" style="padding: 2px; ">
+        <div class="row row-cols-1 g-4 " style="padding: 2px; ">
             <div class="col" style="text-decoration: none; ">
-                <a href="/data?disease=<%=row.disease_name %>" style="text-decoration: none;padding: 15px;">
+                <a href="/data?disease=<%=row.disease_name %>&id=<%=row.Id %>"
+                    style="text-decoration: none;padding: 15px;">
 
-                    <div class="card h-100">
-                        <div class="card-body" style="background-color:#e3f6f5;  ">
-                            <h5 class="card-title" style="color:black;text-align: center;font-style: serif; text-transform: capitalize;">
+                    <div class="card h-100"
+                        onMouseOver="this.style.backgroundColor='#bae8e8';this.style.boxShadow='0px 0px 10px gray'"
+                        onMouseOut="this.style.backgroundColor='';this.style.boxShadow='' ">
+                        <div class="card-body" style="background-color:#e3f6f5;">
+                            <h5 class="card-title"
+                                style="color:black;text-align: center;font-style: serif;text-transform: capitalize;">
                                 <%= row.disease_name%>
                             </h5>
 
