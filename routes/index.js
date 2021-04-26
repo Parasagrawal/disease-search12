@@ -3,10 +3,10 @@ const { request } = require('http')
 const router = express.Router()
 const connection = require('../app')
 
-router.get('/images', (req, res) => {
-    console.log('images')
-    res.render('back2jpeg')
-})
+// router.get('/images', (req, res) => {
+//     console.log('images')
+//     res.render('back2jpeg')
+// })
 router.get('/', (req, res) => {
     connection.query('SELECT * FROM disease', (error, rows, fields) => {
         if (!error) {
@@ -19,12 +19,26 @@ router.get('/', (req, res) => {
     })
 })
 
-// router.get('/images', (req, res) => {
-//     res.attachment");
-// }
+
+router.post('/search', (req, res) => {
+    const search = req.body.searchname
+    // console.log(search.searchname)
+
+    connection.query(`SELECT * FROM disease where disease_name regexp '${search}'`, (error, rows, fields) => {
+        if (!error) {
+            console.log("success")
+            res.render("home", { rows })
+            // res.render("home", { rows })
+        } else {
+            console.log("error")
+            res.send("no disease")
+
+        }
+    })
+});
 
 router.get('/data', (req, res) => {
-    let disease_name=req.query.disease
+    let disease_name = req.query.disease
     // res.render("data")
 
 
@@ -39,7 +53,7 @@ router.get('/data', (req, res) => {
                         if (!error) {
                             let pop = { pop1, pop2, pop3 }
                             // console.log(pop);
-                            res.render("data", { pop1, pop2, pop3,disease_name})
+                            res.render("data", { pop1, pop2, pop3, disease_name })
                         } else {
                             console.log(error)
                             res.send("no disease")
@@ -63,5 +77,8 @@ router.get('/data', (req, res) => {
         }
     })
 })
+
+
+
 
 module.exports = router

@@ -1,7 +1,13 @@
 const express = require('express')
 const mysql = require('mysql')
 const expressLayout = require('express-ejs-layouts')
-var app = express()
+
+var bodyParser = require("body-parser");
+const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
 // const bodyparser = require('body-parser')
 
 // app.use(bodyparser.json)
@@ -39,7 +45,9 @@ const port = process.env.PORT || 5000;
 app.listen(port)
 console.log(port)
 
-app.use('/', require('./routes/index'))
+app.use('/', require('./routes/index'));
+
+
 // app.use('/data', require('./routes/user'))
 
 // app.use('/users', require('./routes/index'))

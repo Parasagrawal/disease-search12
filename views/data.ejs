@@ -13,7 +13,7 @@
     <div class="container" style="margin-top:5em">
         <h1 style="text-transform: uppercase;">
             <%= disease_name%>
-        </h1>   
+        </h1>
 
         <br><br>
         <br>
@@ -24,28 +24,34 @@
             <% pop1.forEach((row,index)=> { %>
 
                 <% if(index%2==0 ) { %>
-                    <li class="list-group-item"><%= row.symtom_name%></li>
-                <% }
-                else { %>
-                        <li class="list-group-item list-group-item-dark"><%= row.symtom_name%></li>
-                  <% } %>
-            <% }) ; %>
+                    <li class="list-group-item" style="width:50%">
+                        <%= row.symtom_name%>
+                    </li>
+                    <% } else { %>
+                        <li class="list-group-item list-group-item-dark" style="width:50%">
+                            <%= row.symtom_name%>
+                        </li>
+                        <% } %>
+                            <% }) ; %>
 
         </ul>
         <br><br>
         <br><br>
 
         <h3>Causes</h3>
-        <hr>    
+        <hr>
         <ul class="list-group">
             <% pop2.forEach((row,index)=> { %>
                 <% if(index%2==0 ) { %>
-                    <li class="list-group-item"><%= row.cause%></li>
-                <% }
-                else { %>
-                        <li class="list-group-item list-group-item-dark"><%= row.cause%></li>
-                  <% } %>
-            <% }) ; %>
+                    <li class="list-group-item" style="width:50%">
+                        <%= row.cause%>
+                    </li>
+                    <% } else { %>
+                        <li class="list-group-item list-group-item-dark" style="width:50%">
+                            <%= row.cause%>
+                        </li>
+                        <% } %>
+                            <% }) ; %>
 
         </ul>
         <br><br>
@@ -56,14 +62,48 @@
         <ul class="list-group">
             <% pop3.forEach((row,index)=> { %>
                 <% if(index%2==0 ) { %>
-                    <li class="list-group-item"><%= row.prevention%></li>
-                <% }
-                else { %>
-                        <li class="list-group-item list-group-item-dark"><%= row.prevention%></li>
-                  <% } %>
-            <% }) ; %>
+                    <li class="list-group-item" style="width:50%">
+                        <%= row.prevention%>
+                    </li>
+                    <% } else { %>
+                        <li class="list-group-item list-group-item-dark" style="width:50%">
+                            <%= row.prevention%>
+                        </li>
+                        <% } %>
+                            <% }) ; %>
 
         </ul>
         <br><br>
     </div>
+
+    <div id="map" style="height: 500px; width: 50%;"></div>
+
+
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            // The location of Uluru
+            const uluru = { lat: 20.0000, lng: 77.0000 };
+            // The map, centered at Uluru
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 8,
+                center: uluru,
+            });
+            // The marker, positioned at Uluru
+            const marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+            });
+        }
+    </script>
+
+    <div id="map" style="height: 400px; width: 50%;"></div>
+</div>
+
+
+
+
+<script
+    src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBKTfqS5w7AUJAUoMTPVLs2a_xOAW_Hu_I&callback=initMap&libraries=&v=weekly"
+    async></script>
 </div>
