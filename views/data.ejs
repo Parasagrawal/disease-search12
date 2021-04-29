@@ -2,7 +2,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">MEDI_Search</a>
+            <a class="navbar-brand" href="/">DISEASE_Search</a>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0"> </ul>
@@ -24,11 +24,11 @@
             <% pop1.forEach((row,index)=> { %>
 
                 <% if(index%2==0 ) { %>
-                    <li class="list-group-item" style="width:50%">
+                    <li class="list-group-item" style="width:100%">
                         <%= row.symtom_name%>
                     </li>
                     <% } else { %>
-                        <li class="list-group-item list-group-item-dark" style="width:50%">
+                        <li class="list-group-item list-group-item-dark" style="width:100%">
                             <%= row.symtom_name%>
                         </li>
                         <% } %>
@@ -43,11 +43,11 @@
         <ul class="list-group">
             <% pop2.forEach((row,index)=> { %>
                 <% if(index%2==0 ) { %>
-                    <li class="list-group-item" style="width:50%">
+                    <li class="list-group-item" style="width:100%">
                         <%= row.cause%>
                     </li>
                     <% } else { %>
-                        <li class="list-group-item list-group-item-dark" style="width:50%">
+                        <li class="list-group-item list-group-item-dark" style="width:100%">
                             <%= row.cause%>
                         </li>
                         <% } %>
@@ -62,11 +62,11 @@
         <ul class="list-group">
             <% pop3.forEach((row,index)=> { %>
                 <% if(index%2==0 ) { %>
-                    <li class="list-group-item" style="width:50%">
+                    <li class="list-group-item" style="width:100%">
                         <%= row.prevention%>
                     </li>
                     <% } else { %>
-                        <li class="list-group-item list-group-item-dark" style="width:50%">
+                        <li class="list-group-item list-group-item-dark" style="width:100%">
                             <%= row.prevention%>
                         </li>
                         <% } %>
@@ -103,7 +103,5 @@
 
 
 
-<script
-    src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBKTfqS5w7AUJAUoMTPVLs2a_xOAW_Hu_I&callback=initMap&libraries=&v=weekly"
-    async></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKTfqS5w7AUJAUoMTPVLs2a_xOAW_Hu_I&v=3" async></script>
 </div>

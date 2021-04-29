@@ -1,0 +1,92 @@
+<script defer>
+
+    function addItem() {
+        let tag = document.createElement("input");
+        tag.className = "form-control"
+        tag.name = "Symtoms"
+        tag.type = "text"
+
+
+        document.getElementById("Symtom").appendChild(tag)
+
+    }
+    function addItem1() {
+        let tag = document.createElement("input");
+        tag.className = "form-control"
+        tag.name = "causes"
+        tag.type = "text"
+
+
+        document.getElementById("Causes").appendChild(tag)
+
+    }
+    function addItem2() {
+        let tag = document.createElement("input");
+        tag.className = "form-control"
+        tag.name = "Prevention"
+        tag.type = "text"
+
+
+        document.getElementById("Prevention").appendChild(tag)
+
+    }
+</script>
+
+
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">DISEASE_Search</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0"> </ul>
+
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container" style="margin-top:5em">
+    <form method="post" action="/form">
+        <div class="mb-3">
+            <label for="Name" class="form-label"
+                style="text-transform: uppercase; font-style: serif;font-size: 20px;">Disease
+                Name</label>
+            <input type="text" class="form-control" id="Name" name="name">
+        </div>
+
+
+        <div class="mb-3 " id="Symtom">
+            <label for="Symtoms" class="form-label"
+                style="text-transform: uppercase; font-style: serif;font-size: 20px;">Symtoms</label>
+            <input type="text" class="form-control" name="Symtoms">
+        </div>
+        <div class="mb-3 ">
+            <button type="button" class="btn btn-primary" onClick="addItem()">Add Row</button>
+        </div>
+
+
+
+        <div class="mb-3 " id="Causes">
+            <label for="causes" class="form-label"
+                style="text-transform: uppercase; font-style: serif;font-size: 20px;">Causes</label>
+            <input type="text" class="form-control" name="causes">
+        </div>
+        <div class="mb-3 ">
+            <button type="button" class="btn btn-primary" onClick="addItem1()">Add Row</button>
+        </div>
+
+        <div class="mb-3 " id="Prevention">
+            <label for="Prevention" class="form-label"
+                style="text-transform: uppercase; font-style: serif;font-size: 20px;">Prevention</label>
+            <input type="text" class="form-control" name="Prevention">
+        </div>
+        <div class="mb-3 ">
+            <button type="button" class="btn btn-primary" onClick="addItem2()">Add Row</button>
+        </div>
+
+
+        <button type="submit" class="btn btn-outline-danger">Submit</button>
+    </form>
+</div>
