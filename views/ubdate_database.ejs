@@ -31,7 +31,12 @@
 
     }
 </script>
-
+<style>
+    body {
+        background-image: none;
+        background-color: #bae8e8;
+    }
+</style>
 
 <!-- navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -49,21 +54,23 @@
 
 <div class="container" style="margin-top:5em">
     <form method="post" action="/form">
+        <h1>ADD DISEASES</h1><br><br>
         <div class="mb-3">
             <label for="Name" class="form-label"
                 style="text-transform: uppercase; font-style: serif;font-size: 20px;">Disease
                 Name</label>
-            <input type="text" class="form-control" id="Name" name="name">
+            <input type="text" class="form-control" id="Name" name="name" placeholder="type disease name here">
         </div>
 
 
         <div class="mb-3 " id="Symtom">
             <label for="Symtoms" class="form-label"
-                style="text-transform: uppercase; font-style: serif;font-size: 20px;">Symtoms</label>
-            <input type="text" class="form-control" name="Symtoms">
+                style="text-transform: uppercase; font-style: serif;font-size: 20px;">Symptom
+            </label>
+            <input type="text" class="form-control" placeholder="type symptom here" name="Symtoms">
         </div>
         <div class="mb-3 ">
-            <button type="button" class="btn btn-primary" onClick="addItem()">Add Row</button>
+            <button type="button" class="btn btn-primary" onClick="addItem()">Add more Symptom</button>
         </div>
 
 
@@ -71,22 +78,24 @@
         <div class="mb-3 " id="Causes">
             <label for="causes" class="form-label"
                 style="text-transform: uppercase; font-style: serif;font-size: 20px;">Causes</label>
-            <input type="text" class="form-control" name="causes">
+            <input type="text" class="form-control" placeholder="type causes here" name="causes">
         </div>
         <div class="mb-3 ">
-            <button type="button" class="btn btn-primary" onClick="addItem1()">Add Row</button>
+            <button type="button" class="btn btn-primary" onClick="addItem1()">Add more causes</button>
         </div>
 
         <div class="mb-3 " id="Prevention">
             <label for="Prevention" class="form-label"
                 style="text-transform: uppercase; font-style: serif;font-size: 20px;">Prevention</label>
-            <input type="text" class="form-control" name="Prevention">
+            <input type="text" class="form-control" placeholder="type prevention here" name="Prevention">
         </div>
         <div class="mb-3 ">
-            <button type="button" class="btn btn-primary" onClick="addItem2()">Add Row</button>
+            <button type="button" class="btn btn-primary" onClick="addItem2()">Add more Prevention</button>
         </div>
 
 
         <button type="submit" class="btn btn-outline-danger">Submit</button>
     </form>
+    <br>
+
 </div>

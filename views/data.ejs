@@ -1,3 +1,9 @@
+<style>
+    body{
+        background-image: none;
+        background-color: #bae8e8;
+    }
+</style>
 <div>
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -18,21 +24,22 @@
         <br><br>
         <br>
 
-        <h3>Symtoms</h3>
+        <h3>Symptom
+        </h3>
         <hr>
-        <ul class="list-group">
+        <ul class="list-group list-group-flush">
             <% pop1.forEach((row,index)=> { %>
 
-                <% if(index%2==0 ) { %>
-                    <li class="list-group-item" style="width:100%">
-                        <%= row.symtom_name%>
-                    </li>
-                    <% } else { %>
-                        <li class="list-group-item list-group-item-dark" style="width:100%">
-                            <%= row.symtom_name%>
-                        </li>
-                        <% } %>
-                            <% }) ; %>
+                <li class="list-group-item" style="background-color:#bae8e8;">
+                    <%= row.symtom_name%>
+
+
+                </li>
+                <% }) %>
+
+
+
+
 
         </ul>
         <br><br>
@@ -40,18 +47,14 @@
 
         <h3>Causes</h3>
         <hr>
-        <ul class="list-group">
+        <ul class="list-group list-group-flush">
             <% pop2.forEach((row,index)=> { %>
-                <% if(index%2==0 ) { %>
-                    <li class="list-group-item" style="width:100%">
-                        <%= row.cause%>
-                    </li>
-                    <% } else { %>
-                        <li class="list-group-item list-group-item-dark" style="width:100%">
-                            <%= row.cause%>
-                        </li>
-                        <% } %>
-                            <% }) ; %>
+                <li class="list-group-item" style="background-color:#bae8e8;"">
+                    <%= row.cause%>
+
+
+                </li>
+                <% }) %>
 
         </ul>
         <br><br>
@@ -59,24 +62,21 @@
 
         <h3>Prevention</h3>
         <hr>
-        <ul class="list-group">
-            <% pop3.forEach((row,index)=> { %>
-                <% if(index%2==0 ) { %>
-                    <li class="list-group-item" style="width:100%">
-                        <%= row.prevention%>
-                    </li>
-                    <% } else { %>
-                        <li class="list-group-item list-group-item-dark" style="width:100%">
-                            <%= row.prevention%>
-                        </li>
-                        <% } %>
-                            <% }) ; %>
+        <ul class=" list-group list-group-flush">
+                    <% pop3.forEach((row,index)=> { %>
+                <li class="list-group-item" style="background-color:#bae8e8;"">
+                    <%= row.prevention %>
+
+
+                </li>
+                <% }) %>
 
         </ul>
         <br><br>
     </div>
 
-    <div id="map" style="height: 500px; width: 50%;"></div>
+    <div id=" map" style="height: 500px; width: 50%;">
+    </div>
 
 
     <script>

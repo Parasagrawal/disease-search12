@@ -1,12 +1,13 @@
 const express = require('express')
 const mysql = require('mysql')
 const expressLayout = require('express-ejs-layouts')
-
+const path=require("path")
 var bodyParser = require("body-parser");
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // const bodyparser = require('body-parser')
 

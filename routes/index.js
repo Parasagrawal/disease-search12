@@ -82,19 +82,10 @@ router.get('/ubdate-database', (req, res) => {
 router.post('/form', (req, res) => {
     let data = req.body;
     let symtom = data.Symtoms
-    // let prevention = JSON.parse(data.Prevention)
     let prevention = data.Prevention
     let causes = data.causes
 
-    // console.log(data, typeof (data))
-    // console.log(prevention, typeof (prevention))
-    // console.log(symtom, typeof (symtom))
-    // console.log(causes, typeof (causes))
-    // console.log(casues, typeof (causes))
-
-
     connection.query(`SELECT * FROM disease where disease_name="${data.name}"`, (error, rows, fields) => {
-        // console.log(rows[0])
         if (rows[0] == undefined) {
             connection.query(`insert into disease(disease_name) values ('${data.name}')`, (error, rows2, fields) => {
                 if (!error) {
