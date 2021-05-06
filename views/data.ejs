@@ -1,7 +1,7 @@
 <style>
-    body{
+    body {
         background-image: none;
-        background-color: #bae8e8;
+        background-color: #78adbdf2;
     }
 </style>
 <div>
@@ -21,7 +21,11 @@
             <%= disease_name%>
         </h1>
 
-        <br><br>
+        <br>
+        <h5>
+            <%= pop4[0].disease_data%>
+        </h5>
+        <br>
         <br>
 
         <h3>Symptom
@@ -30,7 +34,7 @@
         <ul class="list-group list-group-flush">
             <% pop1.forEach((row,index)=> { %>
 
-                <li class="list-group-item" style="background-color:#bae8e8;">
+                <li class="list-group-item" style="background-color:#78adbdf2;">
                     <%= row.symtom_name%>
 
 
@@ -49,7 +53,7 @@
         <hr>
         <ul class="list-group list-group-flush">
             <% pop2.forEach((row,index)=> { %>
-                <li class="list-group-item" style="background-color:#bae8e8;"">
+                <li class="list-group-item" style="background-color:#78adbdf2;"">
                     <%= row.cause%>
 
 
@@ -64,7 +68,7 @@
         <hr>
         <ul class=" list-group list-group-flush">
                     <% pop3.forEach((row,index)=> { %>
-                <li class="list-group-item" style="background-color:#bae8e8;"">
+                <li class="list-group-item" style="background-color:#78adbdf2;"">
                     <%= row.prevention %>
 
 
@@ -75,33 +79,10 @@
         <br><br>
     </div>
 
-    <div id=" map" style="height: 500px; width: 50%;">
-    </div>
-
-
-    <script>
-        // Initialize and add the map
-        function initMap() {
-            // The location of Uluru
-            const uluru = { lat: 20.0000, lng: 77.0000 };
-            // The map, centered at Uluru
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 8,
-                center: uluru,
-            });
-            // The marker, positioned at Uluru
-            const marker = new google.maps.Marker({
-                position: uluru,
-                map: map,
-            });
-        }
-    </script>
-
-    <div id="map" style="height: 400px; width: 50%;"></div>
+   
 </div>
 
 
 
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKTfqS5w7AUJAUoMTPVLs2a_xOAW_Hu_I&v=3" async></script>
 </div>

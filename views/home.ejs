@@ -1,4 +1,16 @@
-<div>
+<style>
+    body {
+
+        background-image: url("images/back4.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
+
+
+
+<div id="bodi">
     <!-- navbar -->
     <nav class=" navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -6,30 +18,114 @@
 
             <div class="navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0"> </ul>
+                <button type="submit" class="me-2 btn btn-light"><a href="#name"
+                        style="color: black;text-decoration: none" title="Disease NAME">Disease</a></button>
+                <button type="submit" class="me-2 btn btn-light"><a href="#contact"
+                        style="color: black;text-decoration: none" title="Add New Disease">Contact</a></button>
                 <button type="submit" class="me-2 btn btn-light"><a href="/ubdate-database"
                         style="color: black;text-decoration: none" title="Add New Disease">Update</a></button>
                 <form action="/search" method="POST" class="d-flex">
                     <input class="form-control me-2" type="text" placeholder="Search" name="searchname">
-                    <button class=" btn btn-outline-success" type="submit">Search</button>
+                    <button class=" btn btn-outline-primary" type="submit">Search</button>
                 </form>
             </div>
         </div>
     </nav>
 
-    <div class="container" style="margin-top:5em">
-        <h1>Disease</h1>
-        <hr>
-        <p style="font-size:1.15em">It is a abnormal condition that negatively affects the structure or function of all
-            or part
-            of an organism, and that is not due to any immediate external injury. Diseases are often known to be medical
-            conditions that are associated with specific signs and symptoms. A disease may be caused by external factors
-            such as pathogens or by internal dysfunctions.</p>
+    <div class="backg" style="color: white;">
+        <div class="container" style="height: 100vh">
+            <br><br>
+            <h2>DISEASE</h2>
+            <hr style="border: 1.5px solid white;">
+            <p style="font-size:1.15em"><strong>It is a abnormal condition that negatively affects the structure or
+                    function of
+                    all
+                    or part
+                    of an organism, and that is not due to any immediate external injury. Diseases are often known to be
+                    medical
+                    conditions that are associated with specific signs and symptoms. A disease may be caused by external
+                    factors
+                    such as pathogens or by internal dysfunctions.</strong></p>
+            <br><br>
+            <a href="#name" class="btn btn-light"> LETS GO</a>
+
+            <br><br>
+            <br><br>
+        </div>
+        <div class="container" id="name" style="height:100vh"">
+            <br>
+                <h3 style=" color: white;" ;">Disease Name</h3>
+            <hr style="border: 1.5px solid white;">
+
+            <div class="container" style="margin-top:5em;display:grid;grid-template-columns: 1fr 1fr 1fr;">
+                <%- include ("./partials/disease"); %>
+            </div>
+
+        </div>
+        <!-- contact -->
 
 
-    </div>
+        <div class="container">
+            <div class="contact-form" id="contact" style="margin-top:10em;height: 100vh;">
+                <div class="form-header" id="form-header">
+                    <br><br>
+                    <br>
+                    <h1>Contact</h1>
+                    <hr style="border: 1.5px solid white;">
+                    <div id="popup1">
+                    </div>
 
 
-    <div class="container" style="margin-top:5em;display:grid;grid-template-columns: 1fr 1fr 1fr;">
-        <%- include ("./partials/disease"); %>
+                    <br><br>
+
+                </div>
+
+                <form method="post" action="/contact">
+
+                    <div class="form-group">
+                        <input type="text" id="name1" name="name" placeholder="Name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Email Id" class="form-control"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" id="message" name="message" class="form-control"
+                            required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" onclick="popup()">Submit</button>
+                    </div>
+                </form>
+
+
+
+            </div>
+        </div>
+
     </div>
 </div>
+
+
+<script>
+    function popup() {
+        let name1 = document.getElementById("name1").value
+        let email = document.getElementById("email").value
+        let message = document.getElementById("message").value
+        if (name1 !== "" && email !== "" && message !== "") {
+            var p = `<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Form Submited successfully</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>`
+
+            document.getElementById("popup1").innerHTML = p;
+            setTimeout(() => {
+                document.getElementById("popup1").innerHTML = "";
+
+            }, 4000)
+        }
+
+
+    }
+</script>

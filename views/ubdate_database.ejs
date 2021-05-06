@@ -5,6 +5,7 @@
         tag.className = "form-control"
         tag.name = "Symtoms"
         tag.type = "text"
+        tag.required = true
 
 
         document.getElementById("Symtom").appendChild(tag)
@@ -15,6 +16,7 @@
         tag.className = "form-control"
         tag.name = "causes"
         tag.type = "text"
+        tag.required = true
 
 
         document.getElementById("Causes").appendChild(tag)
@@ -25,6 +27,7 @@
         tag.className = "form-control"
         tag.name = "Prevention"
         tag.type = "text"
+        tag.required = true
 
 
         document.getElementById("Prevention").appendChild(tag)
@@ -59,7 +62,7 @@
             <label for="Name" class="form-label"
                 style="text-transform: uppercase; font-style: serif;font-size: 20px;">Disease
                 Name</label>
-            <input type="text" class="form-control" id="Name" name="name" placeholder="type disease name here">
+            <input type="text" class="form-control" id="Name" name="name" placeholder="type disease name here" required>
         </div>
 
 
@@ -67,7 +70,7 @@
             <label for="Symtoms" class="form-label"
                 style="text-transform: uppercase; font-style: serif;font-size: 20px;">Symptom
             </label>
-            <input type="text" class="form-control" placeholder="type symptom here" name="Symtoms">
+            <input type="text" class="form-control" placeholder="type symptom here" name="Symtoms" required>
         </div>
         <div class="mb-3 ">
             <button type="button" class="btn btn-primary" onClick="addItem()">Add more Symptom</button>
@@ -78,7 +81,7 @@
         <div class="mb-3 " id="Causes">
             <label for="causes" class="form-label"
                 style="text-transform: uppercase; font-style: serif;font-size: 20px;">Causes</label>
-            <input type="text" class="form-control" placeholder="type causes here" name="causes">
+            <input type="text" class="form-control" placeholder="type causes here" name="causes" required>
         </div>
         <div class="mb-3 ">
             <button type="button" class="btn btn-primary" onClick="addItem1()">Add more causes</button>
@@ -87,7 +90,7 @@
         <div class="mb-3 " id="Prevention">
             <label for="Prevention" class="form-label"
                 style="text-transform: uppercase; font-style: serif;font-size: 20px;">Prevention</label>
-            <input type="text" class="form-control" placeholder="type prevention here" name="Prevention">
+            <input type="text" class="form-control" placeholder="type prevention here" name="Prevention" required>
         </div>
         <div class="mb-3 ">
             <button type="button" class="btn btn-primary" onClick="addItem2()">Add more Prevention</button>

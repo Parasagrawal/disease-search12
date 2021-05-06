@@ -26,6 +26,8 @@ var connection = mysql.createConnection({
 });
 module.exports = connection;
 
+module.exports = connection;
+
 connection.connect((error) => {
     if (error) {
         throw error

@@ -231,3 +231,34 @@ insert into causes values(11,"Hereditary");
 insert into causes values(11,"High BP or Cholesterol");
 insert into causes values(11,"Overweight");
 insert into causes values(11,"Family history of CDV");
+
+
+
+
+
+create table contact(
+id int,
+name varchar(50) ,
+email varchar(50),
+message varchar(250)
+);
+
+
+ALTER TABLE disease ADD COLUMN disease_data VARCHAR(500) AFTER disease_name;
+
+UPDATE disease SET disease_data = "Cardiovascular diseases are a range of conditions that affect your heart. They are the leading cause of deaths in India. Lifestyle risk factors, socio-economic changes, etc. are major causes of the rise of CVD." WHERE Id=11;
+UPDATE disease SET disease_data = "A stroke occurs when the artery in your brain leaks or gets blocked. The symptoms of stroke include sudden numbness and confusion. It also causes vision loss and weakness. Read below in detail the symptoms, causes and preventive measures of Stroke" WHERE Id=2;
+UPDATE disease SET disease_data = "Respiratory infections including lung abscess, acute bronchitis and pneumonia are another biggest cause of death in India. It is one of the most common infections which affect adults. " WHERE Id=3;
+UPDATE disease SET disease_data = "It is an infectious disease that generally affects the lungs but may affect other body parts as well. But the good news is that tuberculosis is curable and preventable. " WHERE Id=4;
+UPDATE disease SET disease_name = "Tuberculosis (TB)" WHERE Id=4;
+UPDATE disease SET disease_data = "It is an infectious disease that generally affects the lungs but may affect other body parts as well. But the good news is that tuberculosis is curable and preventable. " WHERE Id=4;
+UPDATE disease SET disease_data = "Chronic Obstructive Pulmonary Disease or COPD is a long-term lung disease that causes the patients difficulty in breathing. Not only in India, but COPD is responsible for taking the lives of many across the world. " WHERE Id=5;
+UPDATE disease SET disease_name = "Chronic Obstructive Pulmonary Disease" WHERE Id=5;
+UPDATE disease SET disease_data = "Chronic Obstructive Pulmonary Disease or COPD is a long-term lung disease that causes the patients difficulty in breathing. Not only in India, but COPD is responsible for taking the lives of many across the world. " WHERE Id=5;
+UPDATE disease SET disease_data = "Diabetes affects insulin production and use. There are two types of Diabetes-Type 1 where the pancreas does not produce enough insulin and Type 2 where enough insulin is nor produced or it cannot be used effectively. Diabetes is a life-threatening disease. Read along to know about its symptoms, causes, and ways to prevent-" WHERE Id=6;
+UPDATE disease SET disease_data = "With Alzheimer’s disease comes not only loss of memory, but also loss of life in many cases. The progressive disease destroys memory and interrupts in activities like thinking, reasoning," WHERE Id=7;
+UPDATE disease SET disease_data = "Malaria is a fatal disease which is caused by Plasmodium parasite transmission by mosquitoes. It usually affects people in tropical and subtropical climates where parasites live. Read below symptoms, causes and ways to treat the disease." WHERE Id=8;
+UPDATE disease SET disease_data = "Diarrhea is when you pass three or more loose stools in a day. It reduces the water and salt levels from your body making it weak. If it continues for days, then you may face dehydration. Let us read about its symptoms, causes, and how can we prevent ourselves from the disease-" WHERE Id=9;
+UPDATE disease SET disease_data = "Malignant tumours are cancerous and develop when cells grow without any control. It can grow to other parts of the body and spread as well making it life-threatening. The person may feel a tumour while often it is detected via imaging tests like MRI. Let us read about the symptoms, causes, and ways to prevent it below-" WHERE Id=10;
+UPDATE disease SET disease_data = "COVID-19 is the disease caused by SARS-CoV-2, the coronavirus that emerged in December 2019.The coronavirus can be spread from person to person. It is diagnosed with a laboratory test." WHERE Id=1;
+

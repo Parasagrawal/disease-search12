@@ -2,7 +2,7 @@ const express = require('express')
 const { request } = require('http')
 const router = express.Router()
 const connection = require('../app')
-
+var nodemailer = require('nodemailer');
 // router.get('/images', (req, res) => {
 //     console.log('images')
 //     res.render('back2jpeg')
@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
             res.render("home", { rows })
         } else {
             console.log("error")
-            res.send("no disease")
+            res.send("NO Disease Name In the database")
 
         }
     })
@@ -28,16 +28,7 @@ router.post('/search', (req, res) => {
             res.render("home", { rows })
 
         } else {
-
-            connection.query('SELECT * FROM disease', (error, rows, fields) => {
-                if (!error) {
-                    res.render("home", { rows })
-                } else {
-                    console.log("error")
-
-                }
-            })
-
+            res.redirect('/')
         }
     })
 });
@@ -52,26 +43,35 @@ router.get('/data', (req, res) => {
                 if (!error) {
                     connection.query(`SELECT distinct preventions.prevention FROM disease INNER JOIN preventions ON ${req.query.id}=preventions.d_id;`, (error, pop3, fields) => {
                         if (!error) {
-                            let pop = { pop1, pop2, pop3 }
-                            res.render("data", { pop1, pop2, pop3, disease_name })
-                        } else {
-                            console.log(error)
+                            connection.query(`SELECT disease_data FROM disease where Id=${req.query.id};`, (error, pop4, fields) => {
+                                if (!error) {
+                                    console.log(pop4);
+                                    res.render("data", { pop1, pop2, pop3, pop4, disease_name })
+                                } else {
+                                    console.log(error)
+                                    res.send("no disease")
+                                }
+                            
+                                
+                        })
+                    } else {
+                        console.log(error)
                             res.send("no disease")
-                        }
+                    }
 
                     })
-                } else {
-                    console.log(error)
-                    res.send("no disease")
-                }
-
-            })
-        }
-        else {
+        } else {
             console.log(error)
             res.send("no disease")
-
         }
+
+    })
+}
+        else {
+        console.log(error)
+            res.send("no disease")
+
+    }
     })
 })
 
@@ -172,5 +172,47 @@ router.post('/form', (req, res) => {
 })
 
 
+router.post('/contact', (req, res) => {
+    const data = req.body
+
+    connection.query(`insert into contact(name,email,message) values("${data.name}","${data.email}","${data.message}")`, (error, rows, fields) => {
+        if (!error) {
+            console.log("contact send to database")
+        } else {
+
+            console.log("popq")
+
+        }
+    })
+
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'diseasesearch123@gmail.com',
+            pass: 'disease@123'
+        }
+    });
+
+    var mailOptions = {
+        from: `diseasesearch123@gmail.com`,
+        to: 'diseasesearch123@gmail.com',
+        subject: `${data.name},project query`,
+        text: `${data.message}   . Email Id is = ${data.email}`
+    };
+
+    transporter.sendMail(mailOptions, function (error, data) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent');
+        }
+    });
+})
+
+
 
 module.exports = router
+
+
+
+
