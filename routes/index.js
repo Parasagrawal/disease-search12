@@ -7,10 +7,13 @@ var nodemailer = require('nodemailer');
 //     console.log('images')
 //     res.render('back2jpeg')
 // })
+const users = { name: "ADMIN", email: 'diseasesearch@gmail.com', password: '12345678' }
+let userislogin = false
+
 router.get('/', (req, res) => {
     connection.query('SELECT * FROM disease', (error, rows, fields) => {
         if (!error) {
-            res.render("home", { rows })
+            res.render("home", { rows, userislogin })
         } else {
             console.log("error")
             res.send("NO Disease Name In the database")
@@ -25,7 +28,7 @@ router.post('/search', (req, res) => {
 
     connection.query(`SELECT * FROM disease where disease_name regexp '${search}'`, (error, rows, fields) => {
         if (!error) {
-            res.render("home", { rows })
+            res.render("home", { rows, userislogin })
 
         } else {
             res.redirect('/')
@@ -45,49 +48,56 @@ router.get('/data', (req, res) => {
                         if (!error) {
                             connection.query(`SELECT disease_data FROM disease where Id=${req.query.id};`, (error, pop4, fields) => {
                                 if (!error) {
-                                    console.log(pop4);
-                                    res.render("data", { pop1, pop2, pop3, pop4, disease_name })
+
+                                    res.render("data", { pop1, pop2, pop3, pop4, disease_name, userislogin })
                                 } else {
                                     console.log(error)
                                     res.send("no disease")
                                 }
-                            
-                                
-                        })
-                    } else {
-                        console.log(error)
+
+
+                            })
+                        } else {
+                            console.log(error)
                             res.send("no disease")
-                    }
+                        }
 
                     })
-        } else {
+                } else {
+                    console.log(error)
+                    res.send("no disease")
+                }
+
+            })
+        }
+        else {
             console.log(error)
             res.send("no disease")
+
         }
-
-    })
-}
-        else {
-        console.log(error)
-            res.send("no disease")
-
-    }
     })
 })
 
 router.get('/ubdate-database', (req, res) => {
-    res.render("ubdate_database")
+    if (userislogin) {
+        res.render("ubdate_database",{userislogin})
+
+    }
+    else {
+        res.render("login")
+    }
 })
 
 router.post('/form', (req, res) => {
     let data = req.body;
+    let about=data.about_disease
     let symtom = data.Symtoms
     let prevention = data.Prevention
     let causes = data.causes
 
     connection.query(`SELECT * FROM disease where disease_name="${data.name}"`, (error, rows, fields) => {
         if (rows[0] == undefined) {
-            connection.query(`insert into disease(disease_name) values ('${data.name}')`, (error, rows2, fields) => {
+            connection.query(`insert into disease(disease_name,disease_data) values ('${data.name}','${about}')`, (error, rows2, fields) => {
                 if (!error) {
                     connection.query(`SELECT Id FROM disease where disease_name='${data.name}'`, (error, id, fields) => {
                         if (!error) {
@@ -207,6 +217,43 @@ router.post('/contact', (req, res) => {
             console.log('Email sent');
         }
     });
+})
+router.get('/login', (req, res) => {
+    res.render('login.ejs')
+})
+router.post('/login', (req, res) => {
+    let password = req.body.password
+    let email = req.body.email
+    const name = users.name
+    if (users.email == email) {
+
+        if (users.password == password) {
+            userislogin = true
+            connection.query('SELECT * FROM disease', (error, rows, fields) => {
+                if (!error) {
+                    res.render("home", { rows, name, userislogin })
+                } else {
+                    console.log("error")
+                    res.send("NO Disease Name In the database")
+
+                }
+            })
+
+        }
+        else {
+            let mes = { message: "wrong password" }
+            res.render('login', { mes })
+        }
+    }
+    else {
+        let mes = { message: "wrong email" }
+        res.render('login', { mes })
+    }
+})
+
+router.get('/logout', (req, res) => {
+    userislogin = false;
+    res.redirect('/')
 })
 
 
