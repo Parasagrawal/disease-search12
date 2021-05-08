@@ -1,7 +1,10 @@
 <style>
     body {
-        background-image: none;
-        background-color: #78adbdf2;
+
+        background-image: url("images/back8extend2.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
     }
 </style>
 <div>
@@ -25,15 +28,17 @@
         </h1>
 
         <br>
-        <h5>
+        <div style="font-weight: bold;">
+
             <%= pop4[0].disease_data%>
-        </h5>
+        </div>
+
         <br><br>
         <h3>Symptom</h3>
         <hr>
         <ul class="list-group list-group-flush">
             <% pop1.forEach((row,index)=> { %>
-                <li class="list-group-item" style="background-color:#78adbdf2;">
+                <li class="list-group-item" style="background-color:transparent;text-transform: capitalize;">
                     <%= row.symtom_name%>
                 </li>
                 <% }) %>
@@ -43,7 +48,7 @@
         <hr>
         <ul class="list-group list-group-flush">
             <% pop2.forEach((row,index)=> { %>
-                <li class="list-group-item" style="background-color:#78adbdf2;"">
+                <li class="list-group-item" style="background-color:transparent;text-transform: capitalize;">
                     <%= row.cause%>
 
 
@@ -57,8 +62,8 @@
         <h3>Prevention</h3>
         <hr>
         <ul class=" list-group list-group-flush">
-                    <% pop3.forEach((row,index)=> { %>
-                <li class="list-group-item" style="background-color:#78adbdf2;"">
+            <% pop3.forEach((row,index)=> { %>
+                <li class="list-group-item" style="background-color:transparent;text-transform: capitalize; ">
                     <%= row.prevention %>
 
 
@@ -69,7 +74,7 @@
         <br><br>
     </div>
 
-   
+
 </div>
 
 
