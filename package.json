@@ -13,5 +13,26 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "sys": "^0.0.1"
-  }
+  },
+  "name": "disease-search12",
+  "description": "medical-search-engine",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {
+    "nodemon": "2.0.7"
+  },
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Parasagrawal/disease-search12.git"
+  },
+  "author": "Paras Agrawal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Parasagrawal/disease-search12/issues"
+  },
+  "homepage": "https://github.com/Parasagrawal/disease-search12#readme"
 }
