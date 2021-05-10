@@ -207,7 +207,8 @@ router.post('/contact', (req, res) => {
         from: `diseasesearch123@gmail.com`,
         to: 'diseasesearch123@gmail.com',
         subject: `${data.name},project query`,
-        text: `${data.message}   . Email Id is = ${data.email}`
+        text: `${data.message}   .
+         Email Id is = ${data.email}`
     };
 
     transporter.sendMail(mailOptions, function (error, data) {
