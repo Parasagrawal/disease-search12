@@ -80,7 +80,7 @@ router.get('/data', (req, res) => {
 
 router.get('/ubdate-database', (req, res) => {
     if (userislogin) {
-        res.render("ubdate_database",{userislogin})
+        res.render("ubdate_database", { userislogin })
 
     }
     else {
@@ -90,7 +90,7 @@ router.get('/ubdate-database', (req, res) => {
 
 router.post('/form', (req, res) => {
     let data = req.body;
-    let about=data.about_disease
+    let about = data.about_disease
     let symtom = data.Symtoms
     let prevention = data.Prevention
     let causes = data.causes
@@ -189,9 +189,7 @@ router.post('/contact', (req, res) => {
         if (!error) {
             console.log("contact send to database")
         } else {
-
             console.log("popq")
-
         }
     })
 
@@ -207,15 +205,24 @@ router.post('/contact', (req, res) => {
         from: `diseasesearch123@gmail.com`,
         to: 'diseasesearch123@gmail.com',
         subject: `${data.name},project query`,
-        text: `${data.message}   .
+        text: `${data.message} .
          Email Id is = ${data.email}`
     };
 
     transporter.sendMail(mailOptions, function (error, data) {
         if (error) {
-            console.log(error);
+
         } else {
-            console.log('Email sent');
+            connection.query('SELECT * FROM disease', (error, rows, fields) => {
+                if (!error) {
+                    let mes = { message: "Form Submited successfully" }
+                    console.log('Email sent');
+                    res.render("home", { rows, userislogin, mes })
+                } else {
+                    console.log("error")
+                }
+            })
+
         }
     });
 })

@@ -86,13 +86,18 @@
                     <h1>Contact</h1>
                     <hr style="border: 1.5px solid white;">
                     <div id="popup1">
+                        <% if(typeof mes !='undefined' ) { %>
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <strong>
+                                    <%= mes.message%>
+                                </strong>
+
+                                <button type="button" class="btn-close" onclick="$('#modal_id').modal('hide');"
+                                    aria-label="Close"></button>
+                            </div>
+                            <% } %>
                     </div>
-
-
-                    <br><br>
-
                 </div>
-
                 <form method="post" action="/contact">
 
                     <div class="form-group">
@@ -111,37 +116,8 @@
                         <button class="btn btn-primary" onclick="popup()">Submit</button>
                     </div>
                 </form>
-
-
-
             </div>
         </div>
 
     </div>
 </div>
-
-
-<script>
-    function popup() {
-        let name1 = document.getElementById("name1").value
-        let email = document.getElementById("email").value
-        let message = document.getElementById("message").value
-        if (name1 !== "" && email !== "" && message !== "") {
-            var p = `<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>Form Submited successfully</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>`
-
-            document.getElementById("popup1").innerHTML = p;
-            setTimeout(() => {
-                document.getElementById("popup1").innerHTML = "";
-                document.getElementById("name1").value = ""
-                document.getElementById("email").value = ""
-                document.getElementById("message").value = ""
-
-            }, 4000)
-        }
-
-
-    }
-</script>
