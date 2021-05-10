@@ -28,14 +28,6 @@
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Parasagrawal/disease-search12.git"
-  },
   "author": "Paras Agrawal",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Parasagrawal/disease-search12/issues"
-  },
-  "homepage": "https://github.com/Parasagrawal/disease-search12#readme"
+  "license": "ISC"
 }
