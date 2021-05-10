@@ -17,6 +17,9 @@
   "name": "disease-search12",
   "description": "medical-search-engine",
   "version": "1.0.0",
+  "engines": {
+    "node": "15.x"
+  }
   "main": "app.js",
   "devDependencies": {
     "nodemon": "2.0.7"
