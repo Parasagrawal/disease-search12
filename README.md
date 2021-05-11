@@ -15,16 +15,15 @@ for Back-End : Node JS (Express Framewrok) , MySql (php myadmin)
 
 How to use code:
 
-Download project
 
-git clone https://github.com/Parasagrawal/disease-search12.git
 
-Project Initialize
 
-Opening Project folder in VS code
+Download project:   git clone https://github.com/Parasagrawal/disease-search12.git
 
-Follow Steps To Run The Code
-1) Download Node-JS version 15.14.0
-2) Write npm i on Command Line
-3) finally ,npm start  or nodemon app.js
-4) go to site http://localhost:5000/
+Project Initialize:  Opening Project folder in VS code
+
+        Follow Steps To Run The Code
+        1) Download Node-JS version 15.14.0
+        2) Write npm i on Command Line
+        3) finally ,npm start  or nodemon app.js
+        4) go to site http://localhost:5000/
