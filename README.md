@@ -2,7 +2,7 @@ About Project:
 
 This application is a simple web application  which enables user to get information 
 about symptoms of a disease,causes of disease and also the information of how to prevent the disease.
-We have also implement a ubdate form where admin can directly a disease from a ui.
+We have also implement a ubdate form feature  where admin can directly add a disease  to database from  UI.
 
 
 Technology Used:
