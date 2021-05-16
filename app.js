@@ -20,10 +20,10 @@ app.set('view engine', 'ejs')
 
 var connection = mysql.createConnection({
 
-    host: 'sql6.freemysqlhosting.net',
-    user: 'sql6410363',
-    password: 'H1It4zzif3',
-    database: 'sql6410363',
+    host: 'remotemysql.com',
+    user: 'lBKw8YSwBc',
+    password: 'xhVjpwBx7U',
+    database: 'lBKw8YSwBc',
 
 });
 // var connection = mysql.createConnection({

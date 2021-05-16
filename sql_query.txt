@@ -1,7 +1,7 @@
 create schema medical_search_engine;
 
 create table disease(
-Id int not null,
+Id int primary key auto increment,
 disease_name varchar(20) not null
 );
 
