@@ -159,12 +159,12 @@ router.post('/form', (req, res) => {
                             console.log(error)
 
                         }
-
+                        console.log("accepted")
                         res.send("Form Accepted")
                     })
 
                 } else {
-                    console.log("error")
+                    console.log(error)
 
 
                 }
