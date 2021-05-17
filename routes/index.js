@@ -1,7 +1,7 @@
 const express = require('express')
 const { request } = require('http')
 const router = express.Router()
-const connection = require('../app')
+const pool = require('../app')
 var nodemailer = require('nodemailer');
 // router.get('/images', (req, res) => {
 //     console.log('images')
@@ -11,7 +11,7 @@ const users = { name: "ADMIN", email: 'diseasesearch@gmail.com', password: '1234
 let userislogin = false
 
 router.get('/', (req, res) => {
-    connection.query('SELECT * FROM disease', (error, rows, fields) => {
+    pool.query('SELECT * FROM disease', (error, rows, fields) => {
         if (!error) {
             res.render("home", { rows, userislogin })
         } else {
@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
 router.post('/search', (req, res) => {
     const search = req.body.searchname
 
-    connection.query(`SELECT * FROM disease where disease_name regexp '${search}'`, (error, rows, fields) => {
+    pool.query(`SELECT * FROM disease where disease_name regexp '${search}'`, (error, rows, fields) => {
         if (!error) {
             res.render("home", { rows, userislogin })
 
@@ -39,14 +39,14 @@ router.post('/search', (req, res) => {
 router.get('/data', (req, res) => {
     let disease_name = req.query.disease
 
-    connection.query(`SELECT distinct symtoms.symtom_name FROM disease INNER JOIN symtoms ON ${req.query.id}=symtoms.d_id;`, (error, pop1, fields) => {
+    pool.query(`SELECT distinct symtoms.symtom_name FROM disease INNER JOIN symtoms ON ${req.query.id}=symtoms.d_id;`, (error, pop1, fields) => {
         if (!error) {
 
-            connection.query(`SELECT distinct causes.cause FROM disease INNER JOIN causes ON ${req.query.id}=causes.d_id;`, (error, pop2, fields) => {
+            pool.query(`SELECT distinct causes.cause FROM disease INNER JOIN causes ON ${req.query.id}=causes.d_id;`, (error, pop2, fields) => {
                 if (!error) {
-                    connection.query(`SELECT distinct preventions.prevention FROM disease INNER JOIN preventions ON ${req.query.id}=preventions.d_id;`, (error, pop3, fields) => {
+                    pool.query(`SELECT distinct preventions.prevention FROM disease INNER JOIN preventions ON ${req.query.id}=preventions.d_id;`, (error, pop3, fields) => {
                         if (!error) {
-                            connection.query(`SELECT disease_data FROM disease where Id=${req.query.id};`, (error, pop4, fields) => {
+                            pool.query(`SELECT disease_data FROM disease where Id=${req.query.id};`, (error, pop4, fields) => {
                                 if (!error) {
 
                                     res.render("data", { pop1, pop2, pop3, pop4, disease_name, userislogin })
@@ -95,14 +95,14 @@ router.post('/form', (req, res) => {
     let prevention = data.Prevention
     let causes = data.causes
 
-    connection.query(`SELECT * FROM disease where disease_name="${data.name}"`, (error, rows, fields) => {
+    pool.query(`SELECT * FROM disease where disease_name="${data.name}"`, (error, rows, fields) => {
         if (rows[0] == undefined) {
-            connection.query(`insert into disease(disease_name,disease_data) values ('${data.name}','${about}')`, (error, rows2, fields) => {
+            pool.query(`insert into disease(disease_name,disease_data) values ('${data.name}','${about}')`, (error, rows2, fields) => {
                 if (!error) {
-                    connection.query(`SELECT Id FROM disease where disease_name='${data.name}'`, (error, id, fields) => {
+                    pool.query(`SELECT Id FROM disease where disease_name='${data.name}'`, (error, id, fields) => {
                         if (!error) {
                             if (typeof (symtom) === 'string') {
-                                connection.query(`insert into symtoms values(${id[0].Id},'${symtom}')`, (error, id2, fields) => {
+                                pool.query(`insert into symtoms values(${id[0].Id},'${symtom}')`, (error, id2, fields) => {
                                     if (error) {
                                         console.log(error)
 
@@ -111,7 +111,7 @@ router.post('/form', (req, res) => {
                             }
                             else {
                                 Array.from(symtom).forEach((sym) => {
-                                    connection.query(`insert into symtoms values(${id[0].Id},"${sym}")`, (error, id2, fields) => {
+                                    pool.query(`insert into symtoms values(${id[0].Id},"${sym}")`, (error, id2, fields) => {
                                         if (error) {
                                             console.log(error)
                                         }
@@ -120,7 +120,7 @@ router.post('/form', (req, res) => {
                                 });
                             }
                             if (typeof (prevention) === 'string') {
-                                connection.query(`insert into preventions values(${id[0].Id},"${prevention}")`, (error, id2, fields) => {
+                                pool.query(`insert into preventions values(${id[0].Id},"${prevention}")`, (error, id2, fields) => {
                                     if (error) {
                                         console.log(error)
                                     }
@@ -129,7 +129,7 @@ router.post('/form', (req, res) => {
                             else {
                                 Array.from(prevention).forEach((pre) => {
 
-                                    connection.query(`insert into preventions values(${id[0].Id},"${pre}")`, (error, id2, fields) => {
+                                    pool.query(`insert into preventions values(${id[0].Id},"${pre}")`, (error, id2, fields) => {
                                         if (error) {
                                             console.log(error)
                                         }
@@ -138,7 +138,7 @@ router.post('/form', (req, res) => {
                                 });
                             }
                             if (typeof (causes) === 'string') {
-                                connection.query(`insert into causes values(${id[0].Id},"${causes}")`, (error, id2, fields) => {
+                                pool.query(`insert into causes values(${id[0].Id},"${causes}")`, (error, id2, fields) => {
                                     if (error) {
                                         console.log(error)
                                     }
@@ -147,7 +147,7 @@ router.post('/form', (req, res) => {
                             else {
 
                                 Array.from(causes).forEach((cau) => {
-                                    connection.query(`insert into causes values(${id[0].Id},"${cau}")`, (error, id2, fields) => {
+                                    pool.query(`insert into causes values(${id[0].Id},"${cau}")`, (error, id2, fields) => {
                                         if (error) {
                                             console.log(error)
                                         }
@@ -185,7 +185,7 @@ router.post('/form', (req, res) => {
 router.post('/contact', (req, res) => {
     const data = req.body
 
-    connection.query(`insert into contact(name,email,message) values("${data.name}","${data.email}","${data.message}")`, (error, rows, fields) => {
+    pool.query(`insert into contact(name,email,message) values("${data.name}","${data.email}","${data.message}")`, (error, rows, fields) => {
         if (!error) {
             console.log("contact send to database")
         } else {
@@ -213,7 +213,7 @@ router.post('/contact', (req, res) => {
         if (error) {
 
         } else {
-            connection.query('SELECT * FROM disease', (error, rows, fields) => {
+            pool.query('SELECT * FROM disease', (error, rows, fields) => {
                 if (!error) {
                     let mes = { message: "Form Submited successfully" }
                     console.log('Email sent');
@@ -237,7 +237,7 @@ router.post('/login', (req, res) => {
 
         if (users.password == password) {
             userislogin = true
-            connection.query('SELECT * FROM disease', (error, rows, fields) => {
+            pool.query('SELECT * FROM disease', (error, rows, fields) => {
                 if (!error) {
                     res.render("home", { rows, name, userislogin })
                 } else {
