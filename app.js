@@ -9,17 +9,8 @@ const { createPool } = require('mysql')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-
-
-// const bodyparser = require('body-parser')
-
-// app.use(bodyparser.json)
 app.use(expressLayout)
 app.set('view engine', 'ejs')
-
-
-
-
 
 const pool = createPool({
     host: 'remotemysql.com',
